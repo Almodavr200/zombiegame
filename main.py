@@ -1,5 +1,7 @@
+#Almir Azimov
 from os import path
 from random import choice, random
+import pygame.mixer
 
 from zombie_game.board import Board
 from zombie_game.functions import quit_game, collide_hit_rect, draw_player_health, get_hit
@@ -50,6 +52,7 @@ class Game:
         self.zombie_death_smoke = []
         self.items_images = {}
         self.sound_effects = {}
+        self.background_music = pygame.mixer.music.load('C:/Users/zimzi/zombie-in-clab/sounds/background.wav')
         self.weapon_sounds = {}
         self.zombie_speeds = ZOMBIE_SPEEDS
         self.zombie_moan_sounds = []
@@ -96,6 +99,7 @@ class Game:
         self.fog.fill(NIGHT_COLOR)
         self.load_light_mask()
         self.load_sounds()
+        pygame.mixer.music.play(-1)
 
     def load_flash_smoke(self):
         for smoke in FLASH_SMOKE:
